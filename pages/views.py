@@ -11,5 +11,15 @@ class HomePageView(TemplateView):
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 
-# def upload(request):
-#     return
+def upload(request):
+    context = {}
+
+    if request.method == "POST":
+        upfile = request.FILES["document"]
+
+        context["fname"] = upfile.name
+        context["fsize"] = upfile.size
+        print(upfile.name)
+        print(upfile.size)
+
+    return render(request, "upload.html", context)
