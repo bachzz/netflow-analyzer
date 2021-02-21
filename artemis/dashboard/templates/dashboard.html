@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome {{ request.user }}</h1>
+
+<h1>Attacks</h1>
+
+<form method="POST" action="."> {% csrf_token %}
+    <input type="submit" name='action' value="Delete" />
+</form>
+
+<form method="POST" action="."> {% csrf_token %}
+    <input type="submit" name='action' value="Refresh" />
+</form>
+
+
+<ul>
+    {% for flow in flows %}
+        <li>ip_src: {{ flow.ip_src }} - ip_dst: {{ flow.ip_dst }} - port_src: {{ flow.port_src }} - port_dst: {{ flow.port_dst }} - label: {{flow.label}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+	<title>Table V04</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-nav">
+			ARTEMIS
+		</div>
+
+		<div class="container-data">
+			<div class="dropdown">
+				<div class="select">
+				  <span>Select monitoring info</span>
+				  <i class="fa fa-chevron-left"></i>
+				</div>
+				<input type="hidden" name="gender">
+				<ul class="dropdown-menu">
+				  <li id="snmp">SNMP values</li>
+				  <li id="active-conn">Active connections</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container-dummy">
+		</div>
+
+
+
+
+		<div class="container-table100">
+
+			<div class="wrap-table100">
+
+				<div class="table100 ver3 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">ifInOctets11</th>
+									<th class="cell100 column2">ifOutOctets11</th>
+									<th class="cell100 column3">ifoutDiscards11</th>
+									<th class="cell100 column4">ifInUcastPkts11</th>
+									<th class="cell100 column5">ifInNUcastPkts11</th>
+									<th class="cell100 column5">ifInDiscards11</th>
+									<th class="cell100 column5">ifOutUcastPkts11</th>
+									<th class="cell100 column5">ifOutNUcastPkts11</th>
+									<th class="cell100 column5">tcpOutRsts</th>
+									<th class="cell100 column5">tcpInSegs</th>
+									<th class="cell100 column5">tcpOutSegs</th>
+									<th class="cell100 column5">tcpPassiveOpens</th>
+									<th class="cell100 column5">tcpRetransSegs</th>
+									<th class="cell100 column5">tcpCurrEstab</th>
+									<th class="cell100 column5">tcpEstabResets</th>
+									<th class="cell100 column5">tcpActiveOpens</th>
+									<th class="cell100 column5">udpInDatagrams</th>
+									<th class="cell100 column5">udpOutDatagrams</th>
+									<th class="cell100 column5">udpInErrors</th>
+									<th class="cell100 column5">udpNoPorts</th>
+									<th class="cell100 column5">ipInReceives</th>
+									<th class="cell100 column5">ipInDelivers</th>
+									<th class="cell100 column5">ipOutRequests</th>
+									<th class="cell100 column5">ipOutDiscards</th>
+									<th class="cell100 column5">ipInDiscards</th>
+									<th class="cell100 column5">ipForwDatagrams</th>
+									<th class="cell100 column5">ipOutNoRoutes</th>
+									<th class="cell100 column5">ipInAddrErrors</th>
+									<th class="cell100 column5">icmpInMsgs</th>
+									<th class="cell100 column5">icmpInDestUnreachs</th>
+									<th class="cell100 column5">icmpOutMsgs</th>
+									<th class="cell100 column5">icmpOutDestUnreachs</th>
+									<th class="cell100 column5">icmpInEchos</th>
+									<th class="cell100 column5">icmpOutEchoReps</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+
+								<tr class="row100 body">
+									<td class="cell100 column1">Yoga for Divas</td>
+									<td class="cell100 column2">Yoga</td>
+									<td class="cell100 column3">9:00 AM - 11:00 AM</td>
+									<td class="cell100 column4">Donna Wilson</td>
+									<td class="cell100 column5">20</td>
+								</tr>
+
+								<tr class="row100 body">
+									<td class="cell100 column1">Virtual Cycle</td>
+									<td class="cell100 column2">Gym</td>
+									<td class="cell100 column3">8:00 AM - 9:00 AM</td>
+									<td class="cell100 column4">Randy Porter</td>
+									<td class="cell100 column5">20</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container-status">
+			asdfasdf
+		</div>
+
+		<div>
+			<table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
+  width="100%">
+			  <thead>
+				<tr>
+				  <th>First name</th>
+				  <th>Last name</th>
+				  <th>Position</th>
+				  <th>Office</th>
+				  <th>Age</th>
+				  <th>Start date</th>
+				  <th>Salary</th>
+				  <th>Extn.</th>
+				  <th>E-mail</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>Tiger</td>
+				  <td>Nixon</td>
+				  <td>System Architect</td>
+				  <td>Edinburgh</td>
+				  <td>61</td>
+				  <td>2011/04/25</td>
+				  <td>$320,800</td>
+				  <td>5421</td>
+				  <td>t.nixon@datatables.net</td>
+				</tr>
+				<tr>
+				  <td>Garrett</td>
+				  <td>Winters</td>
+				  <td>Accountant</td>
+				  <td>Tokyo</td>
+				  <td>63</td>
+				  <td>2011/07/25</td>
+				  <td>$170,750</td>
+				  <td>8422</td>
+				  <td>g.winters@datatables.net</td>
+				</tr>
+				<tr>
+				  <td>Ashton</td>
+				  <td>Cox</td>
+				  <td>Junior Technical Author</td>
+				  <td>San Francisco</td>
+				  <td>66</td>
+				  <td>2009/01/12</td>
+				  <td>$86,000</td>
+				  <td>1562</td>
+				  <td>a.cox@datatables.net</td>
+				</tr>
+				<tr>
+				  <td>Cedric</td>
+				  <td>Kelly</td>
+				  <td>Senior Javascript Developer</td>
+				  <td>Edinburgh</td>
+				  <td>22</td>
+				  <td>2012/03/29</td>
+				  <td>$433,060</td>
+				  <td>6224</td>
+				  <td>c.kelly@datatables.net</td>
+				</tr>
+				<tr>
+				  <td>Airi</td>
+				  <td>Satou</td>
+				  <td>Accountant</td>
+				  <td>Tokyo</td>
+				  <td>33</td>
+				  <td>2008/11/28</td>
+				  <td>$162,700</td>
+				  <td>5407</td>
+				  <td>a.satou@datatables.net</td>
+				</tr>
+				<tr>
+				  <td>Brielle</td>
+				  <td>Williamson</td>
+				  <td>Integration Specialist</td>
+				  <td>New York</td>
+				  <td>61</td>
+				  <td>2012/12/02</td>
+				  <td>$372,000</td>
+				  <td>4804</td>
+				  <td>b.williamson@datatables.net</td>
+				</tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
