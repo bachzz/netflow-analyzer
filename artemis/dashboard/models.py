@@ -2,12 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-class PacketFlow(models.Model):
-    ip_src = models.TextField(default="")
-    ip_dst = models.TextField(default="")
-    port_src = models.TextField(default="")
-    port_dst = models.TextField(default="")
-    label = models.TextField(default="")
 
 class SnmpData(models.Model):
     agent_id = models.TextField()
@@ -49,3 +43,13 @@ class SnmpData(models.Model):
 class AgentStatus(models.Model):
     agent_id = models.TextField(primary_key = True)
     status = models.IntegerField(default = 0)
+    monitor = models.IntegerField(default = 0)
+
+class TrafficData(models.Model):
+    agent_id = models.TextField(default = "")
+    ip_src = models.TextField()
+    port_src = models.IntegerField()
+    ip_dst = models.TextField()
+    port_dst = models.IntegerField()
+    protocol = models.IntegerField()
+    confidence = models.FloatField()

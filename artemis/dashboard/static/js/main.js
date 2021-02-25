@@ -41,6 +41,14 @@
     $('.dropdown-menu li').click(function () {
       var input = $(this).parents('.dropdown').find('input').val() ;
       console.log(input);
+      if (input == "snmp"){
+        $('#snmp-data').show();
+        $('#traffic-data').hide();
+      }
+      else if (input == "traffic-flows"){
+        $('#snmp-data').hide();
+        $('#traffic-data').show();
+      }
     });
 
 
@@ -66,5 +74,7 @@
         $(this).children(".screen").children("img").prop('src', new_src);
     });
 
+    $('#snmp-data').hide();
+    $('#traffic-data').hide();
 
 })(jQuery);

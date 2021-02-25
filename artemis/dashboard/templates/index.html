@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/> -->
 </head>
 <body>
 	<div class="container-nav">
@@ -42,52 +42,19 @@
 				</div>
 				<input type="hidden" name="gender">
 				<ul class="dropdown-menu">
-				  <li id="snmp">SNMP data</li>
-				  <li id="active-conn">Active connections</li>
+				  <li id="snmp">SNMP Data</li>
+				  <li id="traffic-flows">Suspicious Traffic Flows</li>
 				</ul>
 			</div>
 		</div>
 
-			<div class="container-sysinfo">
+			<div class="container-sysinfo" id="snmp-data">
 				{% for agent in agents %}
 				<div class="agent-name">{{ agent.agent_id }}</div>
 				<div class="sysinfo-table">
 				  <table>
 					  <tr>
-						<th>ifInOctets11</th>
-						<th>ifOutOctets11</th>
-						<th>ifoutDiscards11</th>
-						<th>ifInUcastPkts11</th>
-						<th>ifInNUcastPkts11</th>
-						<th>ifInDiscards11</th>
-						<th>ifOutUcastPkts11</th>
-						<th>ifOutNUcastPkts11</th>
-						<th>tcpOutRsts</th>
-						<th>tcpInSegs</th>
-						<th>tcpOutSegs</th>
-						<th>tcpPassiveOpens</th>
-						<th>tcpRetransSegs</th>
-						<th>tcpCurrEstab</th>
-						<th>tcpEstabResets</th>
-						<th>tcpActiveOpens</th>
-						<th>udpInDatagrams</th>
-						<th>udpOutDatagrams</th>
-						<th>udpInErrors</th>
-						<th>udpNoPorts</th>
-						<th>ipInReceives</th>
-						<th>ipInDelivers</th>
-						<th>ipOutRequests</th>
-						<th>ipOutDiscards</th>
-						<th>ipInDiscards</th>
-						<th>ipForwDatagrams</th>
-						<th>ipOutNoRoutes</th>
-						<th>ipInAddrErrors</th>
-						<th>icmpInMsgs</th>
-						<th>icmpInDestUnreachs</th>
-						<th>icmpOutMsgs</th>
-						<th>icmpOutDestUnreachs</th>
-						<th>icmpInEchos</th>
-						<th>icmpOutEchoReps</th>
+						<th>ifInOctets11</th><th>ifOutOctets11</th><th>ifoutDiscards11</th><th>ifInUcastPkts11</th><th>ifInNUcastPkts11</th><th>ifInDiscards11</th><th>ifOutUcastPkts11</th><th>ifOutNUcastPkts11</th><th>tcpOutRsts</th><th>tcpInSegs</th><th>tcpOutSegs</th><th>tcpPassiveOpens</th><th>tcpRetransSegs</th><th>tcpCurrEstab</th><th>tcpEstabResets</th><th>tcpActiveOpens</th><th>udpInDatagrams</th><th>udpOutDatagrams</th><th>udpInErrors</th><th>udpNoPorts</th><th>ipInReceives</th><th>ipInDelivers</th><th>ipOutRequests</th><th>ipOutDiscards</th><th>ipInDiscards</th><th>ipForwDatagrams</th><th>ipOutNoRoutes</th><th>ipInAddrErrors</th><th>icmpInMsgs</th><th>icmpInDestUnreachs</th><th>icmpOutMsgs</th><th>icmpOutDestUnreachs</th><th>icmpInEchos</th><th>icmpOutEchoReps</th>
 					  </tr>
 
 						  {% for instance in snmp_data %}
@@ -107,8 +74,39 @@
 				</div>
 				{% endfor %}
 
+			</div>
+
+
+			<div class="container-sysinfo" id="traffic-data">
+				{% for agent in agents %}
+				<div class="agent-name">{{ agent.agent_id }}</div>
+				<div class="sysinfo-table">
+				  <table>
+					  <tr>
+						<th>IP Src</th><th>Port Src</th><th>IP Dst</th><th>Port Dst</th><th>Protocol</th><th>Confidence</th>
+					  </tr>
+
+						  {% for instance in traffic_data %}
+						  	{% if instance.agent_id == agent.agent_id %}
+					  <tr>
+								{% for field, value in instance.items %}
+						  			{% if field != 'id' and field != 'agent_id' and field != 'confidence' %}
+										<td>{{ value }}</td>
+									{% elif field == 'confidence' %}
+										<td>{{ value }}%</td>
+						  			{% endif %}
+								{% endfor %}
+					  </tr>
+						  	{% endif %}
+						  {% endfor %}
+
+
+				  </table>
+				</div>
+				{% endfor %}
 
 			</div>
+
 
 		</div>
 
@@ -180,7 +178,7 @@
 
 <!--===============================================================================================-->	
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+	<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script> -->
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
